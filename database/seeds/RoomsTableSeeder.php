@@ -14,14 +14,18 @@ class RoomsTableSeeder extends Seeder
         //
         Rooms::create(array(
           'name' => 'Room 1',
+          'colour' => 'green'
+
         ));
 
         Rooms::create(array(
           'name' => 'Room 2',
+          'colour' => 'red'
         ));
 
         Rooms::create(array(
           'name' => 'Room 3',
+          'colour' => 'blue'
         ));
     }
 }

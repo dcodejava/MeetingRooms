@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use App\Http\Controllers;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,18 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
+Route::get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::get('/bookings/{id?}', function ($id = null ) {
+  $b = new App\Http\Controllers\BookingsController;
+  $c = $b->ApiGetBookings($id );
+  return $c;
+});
+
+Route::post('/booking/{id?}', function ($id = null ) {
+  $b = new App\Http\Controllers\BookingsController;
+  $c = $b->ApiPostBookings($id );
+  return $c;
 });

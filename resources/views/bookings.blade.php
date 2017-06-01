@@ -1,7 +1,7 @@
 @extends('layout')
 @section('content')
 <div class="title m-b-md">
-    Current Bookings
+    Select a room
 </div>
 <div class="links">
     @foreach ($rooms as $key => $room):
