@@ -19,14 +19,8 @@ class BookingsController extends Controller
     public function CurrentBookings($id){
       return view('available', [
         'rooms' => rooms::all()->toArray(),
-        'bookings' => bookings::where('room_id','=',$id)
-      ]);
-    }
-
-    public function BookRoom(){
-      return view('bookroom', [
-        'rooms' => rooms::all()->toArray(),
-        'bookings' => bookings::where('room_id','=',$id)
+        'bookings' => bookings::where('room_id','=',$id)->get()->toArray(),
+        'current_room' => rooms::find($id)->toArray()
       ]);
     }
 

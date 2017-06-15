@@ -18,7 +18,10 @@ class CreateBookingsTable extends Migration
             $table->dateTime('start');
             $table->dateTime('end');
             $table->integer('room_id');
-
+            $table->string('title');
+          //internal?
+          //client?
+          //number of attendees
             $table->timestamps();
         });
     }

@@ -8,6 +8,5 @@
       <a href="/bookings/{{ $room['id'] }}">{{ $room['name'] }}</a>
     @endforeach;
   <br/>
-    <a href="book-a-room">Book a room</a>
 </div>
  @stop

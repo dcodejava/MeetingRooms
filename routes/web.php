@@ -17,5 +17,5 @@
 // });
 
 Route::get('/', 'BookingsController@SelectRoom');
-Route::get('/book-a-room', 'BookingsController@BookRoom');
+//Route::get('/book-a-room', 'BookingsController@BookRoom');
 Route::get('bookings/{id}','BookingsController@CurrentBookings');
