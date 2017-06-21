@@ -2,7 +2,6 @@
 
 use Illuminate\Http\Request;
 use App\Http\Controllers;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -24,8 +23,13 @@ Route::get('/bookings/{id?}', function ($id = null ) {
   return $c;
 });
 
-Route::post('/booking/{id?}', function ($id = null ) {
-  $b = new App\Http\Controllers\BookingsController;
-  $c = $b->ApiPostBookings($id );
-  return $c;
-});
+//Route::post('/booking', function (Request $request) {
+////  $b = new App\Http\Controllers\BookingsController;
+////  $c = $b->ApiPostBookings($id );
+////  return $c;
+//  $input = $request->all();
+//  dd($input);
+//
+//});
+
+Route::post('/booking','BookingsController@ApiSaveBooking');

@@ -5,7 +5,7 @@ $(document).ready(function() {
 
     $('#calendar').fullCalendar({
         schedulerLicenseKey: 'CC-Attribution-NonCommercial-NoDerivatives',
-        editable: true,
+       // editable: true,
        // now: '2017-05-07',
         aspectRatio: 2.5,
         scrollTime: '00:00', // undo default 6am scrollTime
