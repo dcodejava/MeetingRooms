@@ -65,7 +65,7 @@
                         <div class="form-group">
                             <label for="name" class="col-sm-3 control-label">Duration (Minutes)*</label>
                             <div class="col-sm-9">
-                                <input type="number" class="form-control" id="duration" name="duration" placeholder="13">
+                                <input type="number" class="form-control" id="duration" name="duration" >
                             </div>
                         </div>
                         <div class="form-group">
@@ -79,7 +79,7 @@
                 <div class="modal-footer">
                     <input type="hidden" name="room_id" id="room_id" value="{{ $current_room["id"] }}">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary" onclick="bookRoom();">Save changes</button>
+                    <button type="button" class="btn btn-primary" onclick="bookRoom();">Save</button>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
@@ -94,7 +94,7 @@
         ];
         window.Bookings = [
         @foreach ($bookings as $key => $booking)
-            { id: "{{ $booking['id'] }}" ,resourceId: "{{ $booking['room_id'] }}" , title: "{{ $booking['title'] }}" ,start: "{{ $booking['start'] }}", end: "{{ $booking['end'] }}"  },
+            { id: "{{ $booking['id'] }}" ,resourceId: "{{ $booking['room_id'] }}" , title: "{{ $booking['title'] }}" ,start: "{{ $booking['start'] }}", end: "{{ $booking['end'] }}" , attendees : '{!! $booking['attendees'] !!}' , client : "{{ $booking['client'] }}" , internal : "{{ $booking['internal'] }}"  },
         @endforeach
 
         ];
@@ -146,6 +146,7 @@
             }
         }
 
+
     </script>
 
     <div class="" id="calendar"></div>
@@ -158,8 +159,47 @@
         @endforeach;
         <br/>
     </div>
-
-
+    <div id="popoverContent" class="hide">
+        <div class="container-fluid">
+            <div class="row">
+                <label for="name" class="col-sm-6 control-label">Name</label>
+                <div class="col-sm-6">
+                    <span id="name-content"></span>
+                </div>
+            </div>
+            <div class="row">
+                <label for="name" class="col-sm-6 control-label">Attendees</label>
+                <div class="col-sm-6">
+                    <span id="attendees-content"></span>
+                </div>
+            </div>
+            <div class="row">
+                <label for="name" class="col-sm-6 control-label">Clients</label>
+                <div class="col-sm-6">
+                      <span id="clients-content"></span>
+                </div>
+            </div>
+            <div class="row">
+                <label for="name" class="col-sm-6 control-label">Internal</label>
+                <div class="checkbox col-sm-6">
+                   <span id="internal-content"></span>
+                </div>
+            </div>
+            <div class="row">
+                <label for="datetimepicker1" class="col-sm-6 control-label">Time</label>
+                <div class="checkbox col-sm-6">
+                    <span id="date-content"></span>
+                </div>
+            </div>
+            <div class="row">
+                <label for="name" class="col-sm-6 control-label">Duration</label>
+                <div class="col-sm-6">
+                    <span id="duration-content"></span>
+                </div>
+            </div>
+            <button type="button" class="btn btn-primary" onclick="">Delete Booking</button>
+        </div>
+    </div>
     <script src="/js/calendar.js"></script>
     <script src="/js/scheduler.min.js"></script>
     <link href="/css/scheduler.min.css" rel="stylesheet" type="text/css">

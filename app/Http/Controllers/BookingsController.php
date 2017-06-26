@@ -51,7 +51,7 @@ class BookingsController extends Controller
         $b->end = $end_date;
         $b->room_id = $input['room'];
         $b->title = $input['name'];
-        $b->attendees = $input['attendees'];
+        $b->attendees =  str_replace(array("\r", "\n"), '', nl2br($input['attendees']));
         $b->client = (bool)$input['client'];
         $b->internal = (bool)$input['internal'];
         $b->save();
