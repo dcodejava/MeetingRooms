@@ -1,4 +1,3 @@
-console.log('ho');
 $(document).ready(function() {
 
     // page is now ready, initialize the calendar...
@@ -33,25 +32,28 @@ $(document).ready(function() {
             }
         },
         select: function (start, end, jsEvent) {
-            closePopovers();
-            popoverElement = $(jsEvent.target);
-            $(jsEvent.target).popover({
-                title: 'the title',
-                content: function () {
-                    return $("#popoverContent").html();
-                },
-                template: popTemplate,
-                placement: 'left',
-                html: 'true',
-                trigger: 'click',
-                animation: 'true',
-                container: 'body'
-            }).popover('show');
+            //closePopovers();
+            // popoverElement = $(jsEvent.target);
+            // $(jsEvent.target).popover({
+            //     title: 'the title',
+            //     content: function () {
+            //         console.log('select method /content fx');
+            //        // console.log(jsEvent);
+            //         return $("#popoverContent").html();
+            //     },
+            //     template: popTemplate,
+            //     placement: 'left',
+            //     html: 'true',
+            //     trigger: 'click',
+            //     animation: 'true',
+            //     container: 'body'
+            // }).popover('show');
         },
 
         eventClick: function (calEvent, jsEvent, view) {
             //closePopovers();
-            console.log('1',calEvent);
+            //console.log(calEvent);
+
             // $('#name-content').html(calEvent.title);
             // $('#start-content').html(calEvent.start);
             // $('#attendees-content').html(calEvent.attendees);
@@ -59,14 +61,27 @@ $(document).ready(function() {
             // $('#Internal-content').html(calEvent.internal);
             // $('#date-content').html(calEvent.end);
             // $('#duration-content').html(calEvent.end);
-
+            popoverData = calEvent;
             popoverElement = $(jsEvent.currentTarget);
+
+
+
+
         },
 
         eventRender: function (event, element) {
             element.popover({
-                title: 'the title',
+                title: 'Booking details',
                 content: function () {
+
+                    $('#name-content').html(event.title);
+                    $('#start-content').html(event.start);
+                    $('#attendees-content').html(event.attendees);
+                    $('#clients-content').html(event.clients);
+                    $('#Internal-content').html(event.internal);
+                    $('#date-content').html(event.end);
+                    $('#duration-content').html(event.end);
+
                     return $("#popoverContent").html();
                 },
                 template: popTemplate,
@@ -92,7 +107,7 @@ var popTemplate = [
     '<div class="popover-content"></div>',
     '</div>'].join('');
 
-var popoverElement;
+var popoverElement,popoverData;
 
 function closePopovers() {
     $('.popover').not(this).popover('hide');
